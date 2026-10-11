@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* The site is dark-only: <html> always has class "dark", so dark: variants always apply. */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------- Tokens (see docs/redesign/04-design-system.md) ---------- */
@@ -16,23 +17,6 @@
   --copper-800: #6e3d20;
   --copper-900: #3a2112;
 
-  --background: #f6f1e8;
-  --surface: #ffffff;
-  --surface-2: #efe8dc;
-  --foreground: #16120e;
-  --muted-foreground: #6b6258;
-  --border: rgb(22 18 14 / 0.1);
-  --border-strong: rgb(22 18 14 / 0.18);
-  --primary: var(--copper-600);
-  --primary-foreground: #ffffff;
-  --accent-text: var(--copper-700);
-  --ring: var(--copper-600);
-  --shadow-float: 0 8px 30px rgb(0 0 0 / 0.08);
-
-  color-scheme: light;
-}
-
-.dark {
   --background: #0b0a09;
   --surface: #141210;
   --surface-2: #1c1916;

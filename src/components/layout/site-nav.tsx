@@ -8,7 +8,6 @@ import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { PlateMark } from "@/components/brand/plate-mark";
 import { ProductIcon } from "@/components/product/product-icon";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { navLinks, site } from "@/content/site";
 import { products } from "@/content/products";
 import { easeOutExpo } from "@/lib/motion";
@@ -170,7 +169,6 @@ export function SiteNav() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
             <Link
               href="/products"
               className="hidden h-10 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition hover:brightness-110 sm:inline-flex"

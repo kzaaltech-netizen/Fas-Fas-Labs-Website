@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { FooterWordmark } from "@/components/layout/footer-wordmark";
 import { BackToTop } from "@/components/layout/back-to-top";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { ProductIcon } from "@/components/product/product-icon";
 import { products } from "@/content/products";
 import { site } from "@/content/site";
@@ -86,10 +85,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {site.name}. Made in {site.city}, {site.country}.
           </p>
-          <div className="flex items-center gap-2">
-            <BackToTop />
-            <ThemeToggle className="size-9" />
-          </div>
+          <BackToTop />
         </div>
       </div>
       <FooterWordmark />
