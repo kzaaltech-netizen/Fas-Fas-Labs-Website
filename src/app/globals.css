@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* The site is dark-only: <html> always has class "dark", so dark: variants always apply. */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------- Tokens (see docs/redesign/04-design-system.md) ---------- */
@@ -16,23 +17,6 @@
   --copper-800: #6e3d20;
   --copper-900: #3a2112;
 
-  --background: #f6f1e8;
-  --surface: #ffffff;
-  --surface-2: #efe8dc;
-  --foreground: #16120e;
-  --muted-foreground: #6b6258;
-  --border: rgb(22 18 14 / 0.1);
-  --border-strong: rgb(22 18 14 / 0.18);
-  --primary: var(--copper-600);
-  --primary-foreground: #ffffff;
-  --accent-text: var(--copper-700);
-  --ring: var(--copper-600);
-  --shadow-float: 0 8px 30px rgb(0 0 0 / 0.08);
-
-  color-scheme: light;
-}
-
-.dark {
   --background: #0b0a09;
   --surface: #141210;
   --surface-2: #1c1916;
@@ -144,7 +128,7 @@
 
 @utility text-display-xl {
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 7.4vw, 8rem);
+  font-size: clamp(2.75rem, 7.4vw, 8rem);
   line-height: 0.92;
   letter-spacing: -0.04em;
   font-weight: 700;
@@ -152,7 +136,7 @@
 
 @utility text-display-lg {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(2.25rem, 6vw, 5.5rem);
   line-height: 0.98;
   letter-spacing: -0.035em;
   font-weight: 700;
@@ -160,10 +144,22 @@
 
 @utility text-display-md {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
   font-weight: 700;
+}
+
+/* Product names: scale with the column so long names like "PlacementQuest" never overflow */
+@utility text-product-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.5rem, 7vw, 3.5rem);
+  @media (width >= 1024px) {
+    font-size: clamp(2rem, 3.6vw, 3.5rem);
+  }
 }
 
 /* Italic serif emphasis word inside display headings */

@@ -41,7 +41,7 @@ export function Hero() {
               </ButtonLink>
             </Reveal>
           </div>
-          <div className="order-1 mx-auto w-[min(62vw,280px)] lg:order-2 lg:w-full lg:max-w-[520px]">
+          <div className="order-1 mx-auto w-[min(48vw,220px)] sm:w-[min(52vw,280px)] lg:order-2 lg:w-full lg:max-w-[520px]">
             <PlateAssembly />
           </div>
         </div>

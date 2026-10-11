@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { easeOutExpo } from "@/lib/motion";
 
 export type Segment = { text: string; em?: boolean };
@@ -32,9 +33,7 @@ export function SplitText({ lines, className, delay = 0, stagger = 0.06, onMount
               .map((word, wi) => {
                 if (/^\s+$/.test(word)) return <span key={`${si}-${wi}`}> </span>;
                 const d = delay + i++ * stagger;
-                const anim = reduce
-                  ? { initial: { opacity: 0 }, to: { opacity: 1 } }
-                  : { initial: { y: "105%", rotate: 4 }, to: { y: "0%", rotate: 0 } };
+                const anim = { initial: { y: "105%", rotate: 4 }, to: { y: "0%", rotate: 0 } };
                 return (
                   <span key={`${si}-${wi}`} className="inline-block overflow-hidden pb-[0.08em] -mb-[0.08em] align-top">
                     <motion.span
@@ -43,7 +42,7 @@ export function SplitText({ lines, className, delay = 0, stagger = 0.06, onMount
                       {...(onMount
                         ? { animate: anim.to }
                         : { whileInView: anim.to, viewport: { once: true, margin: "-10% 0px" } })}
-                      transition={{ duration: 0.9, ease: easeOutExpo, delay: d }}
+                      transition={reduce ? { duration: 0 } : { duration: 0.9, ease: easeOutExpo, delay: d }}
                     >
                       {word}
                     </motion.span>

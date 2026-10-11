@@ -15,7 +15,7 @@ Planning docs for a full rebuild of the FAS FAS Labs website. Read in order.
 
 ## Decisions already made
 
-- **Theme:** light and dark, with a toggle. Default follows the OS setting.
+- **Theme:** dark only (owner decision, 11 Oct 2026). Light mode and the theme toggle were removed.
 - **Accent:** copper/bronze, taken from the two logo plates in `public/logo-plates/`.
 - **Scope of first build:** Home, Products, About, Careers, Contact. Privacy and Terms as simple stubs.
 - **Products to feature:** Jyotishly (Vedic astrology app), PlacementQuest (placement test prep), ArrowTheGame (arrow puzzle game).

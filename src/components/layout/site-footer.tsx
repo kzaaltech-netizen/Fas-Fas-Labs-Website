@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { FooterWordmark } from "@/components/layout/footer-wordmark";
 import { BackToTop } from "@/components/layout/back-to-top";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { ProductIcon } from "@/components/product/product-icon";
 import { products } from "@/content/products";
 import { site } from "@/content/site";
@@ -40,21 +39,21 @@ export function SiteFooter() {
         </div>
 
         {/* Link grid */}
-        <div className="mt-20 grid gap-12 border-t pt-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.2fr_0.7fr_0.6fr]">
-          <div>
+        <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t pt-12 md:mt-20 lg:grid-cols-[1.3fr_1.2fr_0.7fr_0.6fr] lg:gap-12">
+          <div className="col-span-2 lg:col-span-1">
             <p className="text-sm font-semibold">FAS FAS Labs</p>
             <p className="mt-4 max-w-[30ch] text-sm leading-relaxed text-muted-foreground">
               A product studio in {site.city}, {site.country}.
             </p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-4 inline-block text-sm text-accent-text underline-offset-4 hover:underline"
+              className="mt-3 inline-block py-1 text-sm text-accent-text underline-offset-4 hover:underline"
             >
               {site.email}
             </a>
           </div>
 
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <p className="text-sm font-semibold">Products</p>
             <ul className="mt-4 space-y-2">
               {products.map((p) => (
@@ -86,10 +85,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {site.name}. Made in {site.city}, {site.country}.
           </p>
-          <div className="flex items-center gap-2">
-            <BackToTop />
-            <ThemeToggle className="size-9" />
-          </div>
+          <BackToTop />
         </div>
       </div>
       <FooterWordmark />
@@ -101,10 +97,10 @@ function FooterLinks({ title, links }: { title: string; links: { title: string; 
   return (
     <div>
       <p className="text-sm font-semibold">{title}</p>
-      <ul className="mt-4 space-y-2.5">
+      <ul className="mt-3 space-y-1">
         {links.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="relative text-sm transition-colors hover:text-accent-text">
+            <Link href={l.href} className="inline-block py-1 text-sm transition-colors hover:text-accent-text">
               {l.title}
             </Link>
           </li>
