@@ -144,7 +144,7 @@
 
 @utility text-display-xl {
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 7.4vw, 8rem);
+  font-size: clamp(2.75rem, 7.4vw, 8rem);
   line-height: 0.92;
   letter-spacing: -0.04em;
   font-weight: 700;
@@ -152,7 +152,7 @@
 
 @utility text-display-lg {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(2.25rem, 6vw, 5.5rem);
   line-height: 0.98;
   letter-spacing: -0.035em;
   font-weight: 700;
@@ -160,10 +160,22 @@
 
 @utility text-display-md {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
   font-weight: 700;
+}
+
+/* Product names: scale with the column so long names like "PlacementQuest" never overflow */
+@utility text-product-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.5rem, 7vw, 3.5rem);
+  @media (width >= 1024px) {
+    font-size: clamp(2rem, 3.6vw, 3.5rem);
+  }
 }
 
 /* Italic serif emphasis word inside display headings */

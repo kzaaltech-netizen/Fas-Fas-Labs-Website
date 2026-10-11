@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { PlateMark } from "@/components/brand/plate-mark";
 import { ProductIcon } from "@/components/product/product-icon";
@@ -22,6 +23,7 @@ export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const hoverOpenedAt = useRef(0);
 
   useMotionValueEvent(scrollY, "change", (y) => {
     const prev = scrollY.getPrevious() ?? 0;
@@ -49,11 +51,15 @@ export function SiteNav() {
     };
   }, [menuOpen]);
 
-  const openProducts = () => {
+  // Hover opens the menu for mouse users only; touch and keyboard use the toggle button.
+  const openProducts = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse") return;
     clearTimeout(closeTimer.current);
+    if (!productsOpen) hoverOpenedAt.current = Date.now();
     setProductsOpen(true);
   };
-  const closeProductsSoon = () => {
+  const closeProductsSoon = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse") return;
     closeTimer.current = setTimeout(() => setProductsOpen(false), 120);
   };
 
@@ -101,7 +107,11 @@ export function SiteNav() {
                       aria-expanded={productsOpen}
                       aria-controls="products-menu"
                       aria-label="Show products"
-                      onClick={() => setProductsOpen((o) => !o)}
+                      onClick={() => {
+                        // A click right after hover opened the menu should not close it again
+                        if (Date.now() - hoverOpenedAt.current < 600) return;
+                        setProductsOpen((o) => !o);
+                      }}
                       className="-ml-2 grid size-7 place-items-center rounded-full text-muted-foreground hover:text-foreground"
                     >
                       <ChevronDown className={cn("size-3.5 transition-transform", productsOpen && "rotate-180")} />

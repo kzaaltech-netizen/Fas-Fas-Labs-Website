@@ -24,7 +24,7 @@ export function ProductPanel({ product, className }: { product: Product; classNa
     <article
       style={productVars(product)}
       className={cn(
-        "relative grid overflow-hidden rounded-[var(--radius-xl)] p-6 md:p-10 lg:min-h-[min(600px,82svh)] lg:grid-cols-[1fr_1.1fr] lg:gap-10 lg:p-14",
+        "relative grid grid-cols-[minmax(0,1fr)] overflow-hidden rounded-[var(--radius-xl)] p-5 sm:p-6 md:p-10 lg:min-h-[min(600px,82svh)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-10 lg:p-14",
         panelSurface,
         className,
       )}
@@ -32,9 +32,9 @@ export function ProductPanel({ product, className }: { product: Product; classNa
     >
       <div className="relative flex flex-col">
         <p className={cn("text-sm font-medium", productAccentText)}>{product.category}</p>
-        <div className="mt-6 flex items-center gap-4">
-          <ProductIcon product={product} size={56} />
-          <h3 id={`panel-${product.slug}`} className="text-display-md">
+        <div className="mt-6 flex items-center gap-3 sm:gap-4">
+          <ProductIcon product={product} size={56} className="size-11 sm:size-14" />
+          <h3 id={`panel-${product.slug}`} className="text-product-title min-w-0">
             {product.name}
           </h3>
         </div>
@@ -52,7 +52,7 @@ export function ProductPanel({ product, className }: { product: Product; classNa
           </ButtonLink>
           <Link
             href={`/products#${product.slug}`}
-            className="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            className="inline-block py-2 text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
           >
             More details
           </Link>

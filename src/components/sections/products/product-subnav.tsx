@@ -26,8 +26,8 @@ export function ProductSubnav() {
   }, []);
 
   return (
-    <nav aria-label="Products on this page" className="sticky top-24 z-30 flex justify-center">
-      <ul className="flex gap-1 overflow-x-auto rounded-full border bg-surface/80 p-1 shadow-[var(--shadow-float)] backdrop-blur-xl">
+    <nav aria-label="Products on this page" className="sticky top-24 z-30 flex justify-center px-4">
+      <ul className="flex max-w-full gap-1 overflow-x-auto rounded-full [scrollbar-width:none] border bg-surface/80 p-1 shadow-[var(--shadow-float)] backdrop-blur-xl">
         {products.map((p) => (
           <li key={p.slug} className="relative">
             {active === p.slug && (
@@ -37,12 +37,12 @@ export function ProductSubnav() {
               href={`#${p.slug}`}
               aria-current={active === p.slug ? "true" : undefined}
               className={cn(
-                "relative flex items-center gap-2 whitespace-nowrap rounded-full py-1.5 pl-1.5 pr-4 text-sm transition-colors",
+                "relative flex items-center gap-2 whitespace-nowrap rounded-full py-1.5 pl-1.5 pr-4 text-sm transition-colors max-[420px]:p-2",
                 active === p.slug ? "text-foreground" : "text-muted-foreground hover:text-foreground",
               )}
             >
               <ProductIcon product={p} size={24} className="rounded-full" />
-              {p.name}
+              <span className="max-[420px]:sr-only">{p.name}</span>
             </a>
           </li>
         ))}

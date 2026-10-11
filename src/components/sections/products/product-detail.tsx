@@ -14,14 +14,14 @@ export function ProductDetail({ product }: { product: Product }) {
 
   return (
     <section id={product.slug} aria-labelledby={`${product.slug}-title`} className="scroll-mt-40 py-10 md:py-16" style={productVars(product)}>
-      <div className={cn("relative overflow-hidden rounded-[var(--radius-xl)] p-6 md:p-12 lg:p-16", panelSurface)}>
+      <div className={cn("relative overflow-hidden rounded-[var(--radius-xl)] p-5 sm:p-6 md:p-12 lg:p-16", panelSurface)}>
         {/* Header row */}
-        <div className="relative grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-center">
+        <div className="relative grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-center">
           <Reveal>
             <p className={cn("text-sm font-medium", productAccentText)}>{product.category}</p>
-            <div className="mt-6 flex items-center gap-4">
-              <ProductIcon product={product} size={64} />
-              <h2 id={`${product.slug}-title`} className="text-display-md min-w-0" style={{ fontSize: "clamp(2rem, 3vw, 3.25rem)" }}>
+            <div className="mt-6 flex items-center gap-3 sm:gap-4">
+              <ProductIcon product={product} size={64} className="size-12 sm:size-16" />
+              <h2 id={`${product.slug}-title`} className="text-product-title min-w-0">
                 {product.name}
               </h2>
             </div>
@@ -42,7 +42,11 @@ export function ProductDetail({ product }: { product: Product }) {
 
           <Reveal delay={0.1} className="flex w-full justify-center">
             {browserShot && phoneShot ? (
-              <div className="relative w-full pb-10 pr-6 md:pr-10">
+              <>
+              <div className="md:hidden">
+                <ProductVisual product={product} />
+              </div>
+              <div className="relative hidden w-full pb-10 pr-10 md:block">
                 <BrowserFrame url={product.url} className="w-full">
                   <Image src={browserShot.src} alt={browserShot.alt} fill sizes="(min-width: 1024px) 560px, 90vw" className="object-cover object-top" />
                 </BrowserFrame>
@@ -54,6 +58,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   </div>
                 </PhoneFrame>
               </div>
+              </>
             ) : (
               <ProductVisual product={product} />
             )}
