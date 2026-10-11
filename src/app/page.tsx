@@ -1,7 +1,5 @@
 import { Hero } from "@/components/sections/home/hero";
-import { Statement } from "@/components/sections/home/statement";
 import { ProductsShowcase } from "@/components/sections/home/products-showcase";
-import { HowWeBuild } from "@/components/sections/home/how-we-build";
 import { Numbers } from "@/components/sections/home/numbers";
 import { CareersBand } from "@/components/sections/home/careers-band";
 import { site } from "@/content/site";
@@ -24,9 +22,7 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       <Hero />
-      <Statement />
       <ProductsShowcase />
-      <HowWeBuild />
       <Numbers />
       <CareersBand />
     </>

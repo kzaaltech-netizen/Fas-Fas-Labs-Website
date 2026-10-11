@@ -8,7 +8,6 @@ export type Product = {
   oneLiner: string;
   bullets: string[];
   features: { title: string; text: string }[];
-  why: string;
   platforms: string[];
   stats: { value: string; label: string }[];
   icon: string;
@@ -44,7 +43,6 @@ export const products: Product[] = [
       { title: "Panchang", text: "Tithi, nakshatra, yoga and karana for your city, every day." },
       { title: "Muhurat", text: "Find good times for the things that matter to you." },
     ],
-    why: "We wanted an astrology app that explains a birth chart in simple language, without pressure to buy paid consultations.",
     platforms: ["Web"],
     stats: [],
     frame: "phone",
@@ -70,14 +68,13 @@ export const products: Product[] = [
       "A readiness estimate that tells you how sure it is",
     ],
     features: [
-      { title: "Six companies", text: "Accenture, Cognizant GenC, Infosys, McKinsey, TCS NQT and Wipro NLTH. More are being researched." },
+      { title: "Six companies", text: "Accenture, Cognizant GenC, Infosys, McKinsey, TCS NQT and Wipro NLTH." },
       { title: "Worked answers", text: "Every question comes with a step-by-step solution, not just the right option." },
       { title: "Timed mocks", text: "Practise under the same time pressure as the real test." },
       { title: "Readiness estimate", text: "An honest score of how ready you are, with how confident it is." },
       { title: "Quests and streaks", text: "Earn XP for every question, keep a daily streak and clear weekly quests." },
       { title: "Free account", text: "Sign up in under a minute. Progress and streaks follow you across devices." },
     ],
-    why: "Each company runs a different placement test, but most practice material is generic. We sorted questions by the company that asks them.",
     platforms: ["Web"],
     stats: [
       { value: "3,059", label: "practice questions" },
@@ -117,7 +114,6 @@ export const products: Product[] = [
       { title: "Play a friend", text: "Create a room, share the code. Works across web and the mobile app." },
       { title: "Leaderboards", text: "Global rankings for stars and trophies." },
     ],
-    why: "We wanted a short puzzle you can play in a few minutes, with a way to play against friends.",
     platforms: ["Web", "Mobile app"],
     stats: [
       { value: "96", label: "handcrafted levels" },
