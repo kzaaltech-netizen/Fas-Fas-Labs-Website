@@ -94,12 +94,6 @@ export function ProductDetail({ product }: { product: Product }) {
             </Reveal>
           ))}
         </ul>
-
-        {/* Why */}
-        <Reveal className="relative mt-14 grid gap-4 md:grid-cols-[200px_1fr]">
-          <p className="font-semibold">Why we built it</p>
-          <p className="max-w-[60ch] text-lg leading-relaxed text-muted-foreground">{product.why}</p>
-        </Reveal>
       </div>
     </section>
   );
