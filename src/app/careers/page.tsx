@@ -4,12 +4,13 @@ import { Section } from "@/components/layout/section";
 import { Reveal } from "@/components/effects/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Careers",
-  description: "Careers at FAS FAS Labs, a small product team in Ahmedabad.",
-  alternates: { canonical: "/careers" },
-};
+  description: "Careers at FAS FAS Labs, a small product team in Ahmedabad. See open roles, what working here is like and how hiring works.",
+  path: "/careers",
+});
 
 const perks = [
   { title: "Work on live products", text: "What you build goes out to real users, usually within your first few weeks." },

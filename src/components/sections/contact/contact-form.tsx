@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
+import { sendGAEvent } from "@next/third-parties/google";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -40,6 +41,8 @@ export function ContactForm() {
     const subject = encodeURIComponent(`[${topic}] Message from ${name}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+    // GA4 recommended lead event. Only the topic is sent, never the name, email or message.
+    sendGAEvent("event", "generate_lead", { topic });
     setSent(true);
   }
 

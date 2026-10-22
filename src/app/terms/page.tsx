@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/legal-page";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Terms", alternates: { canonical: "/terms" } };
+export const metadata: Metadata = pageMetadata({
+  title: "Terms",
+  description: "Terms of use for the FAS FAS Labs website.",
+  path: "/terms",
+});
 
 // Placeholder text. Have it reviewed before launch; each product keeps its own terms.
 export default function TermsPage() {

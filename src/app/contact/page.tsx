@@ -3,12 +3,13 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Reveal } from "@/components/effects/reveal";
 import { ContactForm } from "@/components/sections/contact/contact-form";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description: "Partnerships, press, careers or product feedback. Write to FAS FAS Labs.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
