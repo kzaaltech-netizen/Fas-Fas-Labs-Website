@@ -6,13 +6,13 @@ import { PlateAssembly } from "@/components/brand/plate-assembly";
 import { StoryTimeline } from "@/components/sections/about/story-timeline";
 import { CareersBand } from "@/components/sections/home/careers-band";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description: `FAS FAS Labs is a ${site.teamSize}-person product studio in ${site.city}, ${site.country}, building Jyotishly, PlacementQuest and ArrowTheGame.`,
-  alternates: { canonical: "/about" },
-};
-
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -33,7 +33,7 @@ export default function AboutPage() {
               FAS FAS Labs was registered in {site.city} in June {site.founded}.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Today we run three of them: Jyotishly for Vedic astrology, PlacementQuest for placement test practice, and ArrowTheGame, a puzzle
+              Today we run three products: Jyotishly for Vedic astrology, PlacementQuest for placement test practice, and ArrowTheGame, a puzzle
               game with live 1v1 matches.
             </p>
           </Reveal>

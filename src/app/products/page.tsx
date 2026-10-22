@@ -3,29 +3,38 @@ import Link from "next/link";
 import { PageHeader } from "@/components/layout/page-header";
 import { ProductSubnav } from "@/components/sections/products/product-subnav";
 import { ProductDetail } from "@/components/sections/products/product-detail";
+import { JsonLd } from "@/components/seo/json-ld";
 import { products } from "@/content/products";
+import { site } from "@/content/site";
+import { orgId, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Products",
-  description: "Jyotishly, PlacementQuest and ArrowTheGame: three live products built by FAS FAS Labs.",
-  alternates: { canonical: "/products" },
-};
+  description:
+    "Jyotishly (Vedic astrology), PlacementQuest (placement test practice) and ArrowTheGame (puzzle game): three live products built by FAS FAS Labs.",
+  path: "/products",
+});
 
-const jsonLd = products.map((p) => ({
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": p.slug === "arrowthegame" ? "VideoGame" : "SoftwareApplication",
-  name: p.name,
-  url: p.url,
-  description: p.oneLiner,
-  applicationCategory: p.slug === "arrowthegame" ? "GameApplication" : p.slug === "placementquest" ? "EducationalApplication" : "LifestyleApplication",
-  operatingSystem: "Web",
-  author: { "@type": "Organization", name: "FAS FAS Labs" },
-}));
+  "@graph": products.map((p) => ({
+    "@type": p.slug === "arrowthegame" ? ["VideoGame", "SoftwareApplication"] : "SoftwareApplication",
+    "@id": `${site.url}/products#${p.slug}`,
+    name: p.name,
+    url: p.url,
+    description: p.oneLiner,
+    image: `${site.url}${p.screenshot?.src ?? p.icon}`,
+    applicationCategory: p.slug === "arrowthegame" ? "GameApplication" : p.slug === "placementquest" ? "EducationalApplication" : "LifestyleApplication",
+    operatingSystem: p.platforms.join(", "),
+    featureList: p.bullets,
+    publisher: { "@id": orgId },
+  })),
+};
 
 export default function ProductsPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={jsonLd} />
       <PageHeader
         title="Our products"
         intro="An astrology app, a placement test practice site and a puzzle game. All three are designed, built and run by our team."
